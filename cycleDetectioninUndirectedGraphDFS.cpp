@@ -24,7 +24,7 @@ class Graph
         } 
     }
 
-    //Detect cycle using DFS
+    //Detect cycle in undirected Graph using DFS
     //call detectCycle pass src node,visited array and parent which is -1 for src node first mark the
     //src node visited and goes through the adjecency List of src node and check which neighbour which 
     //we haven't visited till now and fist visit those node and make the src to parent and if that node

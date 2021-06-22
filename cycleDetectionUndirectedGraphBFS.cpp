@@ -24,7 +24,7 @@ class Graph
         } 
     }
 
-    //Detect cycle using BFS
+    //Detect cycle using BFS in undirected Graph
     bool detectCycleBFS(T src,int visited[],T parent)
     {
       queue<pair<T,T>>q;
