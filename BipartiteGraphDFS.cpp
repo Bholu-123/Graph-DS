@@ -52,23 +52,19 @@ class Graph
     { 
        int color[n+1];
        memset(color,-1, sizeof(color));
-       bool ans;
-       for(int i=1;i<=n;i++)
+       for(auto i:adjList)
        {
-         if(color[i]==-1)
+         if(color[i.first]==-1)
          {
-            ans=isBipartiteDFS(i,color);
+            if(!isBipartiteDFS(i.first,color))
+            {
+              cout<<"Graph is not Bipartite"<<endl;
+              return;
+            }
          }
        }
-        if(ans==1)
-        {
-          cout<<"Graph is Bipartite"<<endl;
-        }
-        else if(ans==0)
-        {
-          cout<<"Graph is not Bipartite"<<endl;
-        }
-       //cout<<"Graph is not Bipartite"<<endl;
+        
+        cout<<"Graph is Bipartite"<<endl;
     }
 };
  

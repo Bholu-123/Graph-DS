@@ -23,7 +23,22 @@ class Graph
           adjList[v].push_back(u);
         } 
     }
+    
+    void printGraph()
+    {
+       //Iterate over the map
+       for(auto i:adjList)
+       {
+         cout<<i.first<<"-->";
 
+         //Iterate over the neighbour of node i.e i.second which iS ll
+         for(auto neighbour:i.second)
+         {
+            cout<<neighbour<<",";
+         }
+         cout<<endl; 
+       }
+    }
     //BFS traversal
     /*First we create a visited array which will take care which node has been
      till now and pass the src node and visited array to bfs fns in bfs fns 
@@ -58,16 +73,17 @@ class Graph
           }
        }
     }
-
+    //check which node is visited or not
     void visited(int n)
     {
       int visited[n+1];
       memset(visited,0, sizeof(visited));
-      for(int i=1;i<=n;i++)
+       //iterate over map and check which is visited or not
+      for(auto i:adjList)
       {
-         if(!visited[i])
+         if(!visited[i.first])
          {
-            BFS(i,visited);
+            BFS(i.first,visited);
          }
       }
     }
@@ -95,7 +111,7 @@ int main()
     }
      
     //print the graph
-    //g.printGraph();
+    g.printGraph();
     cout<<endl;
     g.visited(n);
     return 0;

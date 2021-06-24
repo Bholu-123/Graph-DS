@@ -52,18 +52,18 @@ class Graph
     {
       int visited[n+1];
       memset(visited,0, sizeof(visited));
-      for(int i=1;i<=n;i++)
+      for(auto i:adjList)
       {
-         if(!visited[i])
+         if(!visited[i.first])
          {
-            if(!detectCycleDFS(i,visited,-1))
+            if(detectCycleDFS(i.first,visited,-1))
             {
-              cout<<"Graph is not cyclic";
+              cout<<"Graph is cyclic";
               return;
             }
          }
       }
-       cout<<"Graph is cyclic";
+       cout<<"Graph is not cyclic";
     }
 };
  

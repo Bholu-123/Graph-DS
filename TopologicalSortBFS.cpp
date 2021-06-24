@@ -65,22 +65,6 @@ class Graph
 
       topologicalSortBFS_helper(indegree,n);
     }
-
-    // void printGraph()
-    // {
-    //    //Iterate over the map
-    //    for(auto i:adjList)
-    //    {
-    //      cout<<i.first<<"-->";
-
-    //      //Iterate over the neighbour of node i.e i.second which iS ll
-    //      for(auto neighbour:i.second)
-    //      {
-    //         cout<<neighbour<<",";
-    //      }
-    //      cout<<endl; 
-    //    }
-    // }
 };
  
 int main()

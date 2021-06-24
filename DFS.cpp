@@ -36,16 +36,17 @@ class Graph
           }
       }
     }
-     //Visited creation and call DFS
+     //check which node is visited or not
     void visited(int n)
     {
       int visited[n+1];
       memset(visited,0, sizeof(visited));
-      for(int i=1;i<=n;i++)
+       //iterate over map and check which is visited or not
+      for(auto i:adjList)
       {
-         if(!visited[i])
+         if(!visited[i.first])
          {
-            DFS(i,visited);
+            DFS(i.first,visited);
          }
       }
     }
