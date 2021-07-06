@@ -48,7 +48,10 @@ class Graph
        {
          if(!visited[neighbour])
          {
-           isCycle(neighbour,visited,dfsVis);
+           if(isCycle(neighbour,visited,dfsVis))
+            {
+              return true;
+            }
          }
          else if(visited[neighbour] && dfsVis[neighbour])
          {
@@ -104,6 +107,12 @@ int main()
     //print the graph
     g.printGraph();
     cout<<endl;
-    cout<<g.detectCycle(n);
+    if(g.detectCycle(n))
+      {
+        cout<<"Graph is cyclic";
+        return 0;
+      }
+
+    cout<<"Graph is not cyclic";
     return 0;
 }

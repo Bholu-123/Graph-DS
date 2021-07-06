@@ -27,6 +27,7 @@ class Graph
     //Detect cycle using BFS in undirected Graph
     bool detectCycleBFS(T src,int visited[],T parent)
     {
+      //we will create a queue of pair types which will take care of node and parents
       queue<pair<T,T>>q;
       visited[src]=1;
       q.push({src,-1});
@@ -43,6 +44,8 @@ class Graph
             //cout<<par<<neighbour<<node<<endl;
             q.push({neighbour,node});
           }
+          //if the neighbour is alredy visited check that neighbour is parent or not
+          //if that visited neighbour is not parent then there is a cycle
           else if(visited[neighbour] && par!=neighbour)
           {
             //cout<<"cycle is present"<<endl;

@@ -14,7 +14,7 @@ class Graph
     }
 
     //Add edge function 
-    void addEdge(T u,T v,bool bidir=false)
+    void addEdge(T u,T v,bool bidir=true)
     {
         adjList[u].push_back(v);
 
@@ -24,38 +24,37 @@ class Graph
         } 
     }
 
-    //Topological sort DFS helper
-    void topologicalSortDFS_helper(T src,int visited[],stack<int>&s)
+    void shortestPath(T src,T n)
     {
-      visited[src]=1;
-      for(auto neighbour:adjList[src])
-      {
-        if(!visited[neighbour])
-          topologicalSortDFS_helper(neighbour,visited,s);
-      }
-      s.push(src);
+    	int dist[n+1];
+    	for(auto node:adjList)
+    	{
+        dist[node.first]=INT_MAX;
+    	}
+    	dist[src]=0;
+    	queue<int>q;
+    	q.push(src);
+    	while(!q.empty())
+    	{
+    		T node=q.front();
+    		q.pop();
+
+    		for(auto neighbour:adjList[node])
+    		{
+    			if(dist[neighbour]>dist[node]+1)
+    			{
+    				dist[neighbour]=1+dist[node];
+    				q.push(neighbour);
+    			}
+    		}
+    	}
+
+    	for(auto node:adjList)
+    	{
+    		cout<<src<<" to "<<node.first<<"::"<<dist[node.first]<<endl;
+    	}
     }
 
-    //TOpological sort DFS 
-    void topologicalSortDFS(int n)
-    {
-      int visited[n+1];
-      memset(visited,0, sizeof(visited));
-      stack<int>st;
-      for(auto node:adjList)
-      {
-         if(!visited[node.first])
-         {
-            topologicalSortDFS_helper(node.first,visited,st);
-         }
-      }
-      while(!st.empty())
-      {
-         cout<<st.top()<<" ";
-         st.pop();
-      }
-    }
-    
 };
  
 int main()
@@ -82,6 +81,6 @@ int main()
     //print the graph
     //g.printGraph();
     cout<<endl;
-      g.topologicalSortDFS(n);
+    g.shortestPath(1,n);
     return 0;
 }

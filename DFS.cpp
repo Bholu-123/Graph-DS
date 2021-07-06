@@ -41,7 +41,8 @@ class Graph
     {
       int visited[n+1];
       memset(visited,0, sizeof(visited));
-       //iterate over map and check which is visited or not
+      //iterate over map and check which is visited or not
+      
       for(auto i:adjList)
       {
          if(!visited[i.first])
